@@ -35,8 +35,8 @@ zinit snippet OMZ::lib/history.zsh
 
 zinit snippet OMZ::lib/key-bindings.zsh
 
-zinit ice wait lucid
-zinit snippet OMZ::lib/completion.zsh
+# zinit ice wait lucid
+# zinit snippet OMZ::lib/completion.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::lib/grep.zsh
@@ -75,6 +75,8 @@ zinit light zdharma/fast-syntax-highlighting
 
 zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_zsh_autosuggest_start"
 zinit light zsh-users/zsh-autosuggestions
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=false
 
 zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
 zinit light zdharma/history-search-multi-word
