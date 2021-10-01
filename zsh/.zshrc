@@ -30,6 +30,9 @@ autoload -Uz _zinit
 #     tmux attach -t work || tmux new -s work
 # fi
 
+zinit ice depth=1 atload"!source ~/.p10k-robbyrussell.zsh" lucid nocd
+zinit light romkatv/powerlevel10k
+
 # Oh-my-zsh plugins
 zinit snippet OMZ::lib/history.zsh
 
@@ -93,8 +96,8 @@ zinit light peterhurford/up.zsh
 zinit ice depth=1 wait"2" lucid
 zinit light MichaelAquilina/zsh-you-should-use
 
-zinit ice depth=1; 
-zinit light romkatv/powerlevel10k
+# zinit ice depth=1;
+# zinit light romkatv/powerlevel10k
 
 # open file
 fo() {
