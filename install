@@ -5,11 +5,6 @@ pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
     stow -D $folder
-    stow ".config/$folder" 
-done
-for file in $(echo $STOW_FILES | sed "s/,/ /g")
-do
-    stow -D $folder
-    stow ".config/$file" 
+    stow "$folder" 
 done
 popd
