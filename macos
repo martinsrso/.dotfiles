@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+if [[ -z $STOW_FOLDERS ]]; then
+    STOW_FOLDERS="nvim,tmux,zsh,fish"
+fi
+
+if [[ -z $STOW_FILES ]]; then
+    STOW_FILES=".rgignore,.editorconfig,.gitconfig,.gitignore"
+fi
+
+if [[ -z $DOTFILES ]]; then
+    DOTFILES=$HOME/.dotfiles
+fi
+
+STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES STOW_FILES=$STOW_FILES $DOTFILES/install
