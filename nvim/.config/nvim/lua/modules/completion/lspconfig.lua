@@ -133,7 +133,17 @@ lspconfig.gopls.setup {
 }
 
 local servers = {
-  'dockerls','bashls','pyright', 'tsserver', 'jsonls', 'html',
+  'yamlls',
+  'sqlls',
+  'dockerls',
+  'bashls',
+  'pyright',
+  'tsserver',
+  'jsonls',
+  'html',
+  'ansiblels',
+  -- 'pyls',
+  'cssls'
 }
 
 for _,server in ipairs(servers) do

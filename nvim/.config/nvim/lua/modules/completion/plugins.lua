@@ -1,5 +1,5 @@
 local completion = {}
--- local vim = vim
+local vim = vim
 local conf = require('modules.completion.config')
 
 completion['ms-jpq/coq_nvim'] = {
@@ -10,6 +10,19 @@ completion['ms-jpq/coq_nvim'] = {
         {'ms-jpq/coq.artifacts', branch = 'artifacts'},
     }
 }
+
+--[[ completion['neovim/nvim-lspconfig'] = {
+  after = 'nvim-lspconfig',
+  config = function ()
+    require'lspinstall'.setup() -- important
+
+    local servers = require'lspinstall'.installed_servers()
+    print(vim.inspect(servers))
+    for _, server in pairs(servers) do
+      require'lspconfig'[server].setup{}
+    end
+  end,
+} ]]
 
 -- completion["hrsh7th/nvim-cmp"] = {
 --     event = 'InsertEnter',
