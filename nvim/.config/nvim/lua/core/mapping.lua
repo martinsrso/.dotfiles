@@ -17,13 +17,13 @@ local def_map = {
     -- vnoremap <leader>d "_d
     -- Vim map
     ["n|Y"]          = map_cmd('y$'),
-    ["n|;;"]          = map_cmd('<ESC>'):with_silent():with_noremap(),
-    ["n|;q"]          = map_cmd('q'):with_silent():with_noremap(),
-    ["n|;w"]          = map_cmd('wa'):with_silent():with_noremap(),
+    ["n|;;"]          = map_cmd('<ESC>'),
+    ["n|;q"]          = map_cmd(':q<CR>'),
+    ["n|;w"]          = map_cmd(':wa<CR>'),
     -- ["n|]w"]         = map_cu('WhitespaceNext'):with_noremap(),
     -- ["n|[w"]         = map_cu('WhitespacePrev'):with_noremap(),
-    ["n|]b"]         = map_cu('bp'):with_noremap(),
-    ["n|[b"]         = map_cu('bn'):with_noremap(),
+    ["n|<Leader>bp"]         = map_cu('bp'):with_noremap(),
+    ["n|<Leader>bn"]         = map_cu('bn'):with_noremap(),
     ["n|<Leader>bd"] = map_cu('bd'):with_noremap(),
     -- ["n|<Leader>cn"] = map_cu('COQnow'):with_noremap(),
     -- ["n|<Leader>cw"]  = map_cu([[silent! keeppatterns %substitute/\s\+$//e]]):with_noremap():with_silent(),

@@ -111,7 +111,7 @@ local function load_options()
       cache_enabled = 0
     }
     vim.g.python_host_prog = '/usr/bin/python2'
-    vim.g.python3_host_prog = '/usr/local/bin/python3'
+    vim.g.python3_host_prog = '/usr/local/bin/python3.9'
   end
   for name, value in pairs(global_local) do
     vim.o[name] = value

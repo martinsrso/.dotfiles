@@ -92,19 +92,19 @@ completion['liuchengxu/vista.vim'] = {
   config = conf.vim_vista
 }
 
--- completion['ray-x/go.nvim'] = {
---     ft = {'go'},
---     -- cmd = {'Goimport', 'GoAddAllTest', 'GoAlt'},
---     -- cmd = {'Goimport', 'GoAddAllTest', 'GoAlt'},
---     config = function ()
---         require('go').setup({})
---     end,
---     requires = {
---         {'mfussenegger/nvim-dap'},
---         {'rcarriga/nvim-dap-ui'},
---         {'theHamsta/nvim-dap-virtual-text'},
---     }
--- }
+completion['ray-x/go.nvim'] = {
+    ft = {'go'},
+    -- cmd = {'Goimport', 'GoAddAllTest', 'GoAlt'},
+    -- cmd = {'Goimport', 'GoAddAllTest', 'GoAlt'},
+    config = function ()
+        require('go').setup({})
+    end,
+    requires = {
+        {'mfussenegger/nvim-dap'},
+        {'rcarriga/nvim-dap-ui'},
+        {'theHamsta/nvim-dap-virtual-text'},
+    }
+}
 
 --[[ completion['fatih/vim-go'] = {
     ft = {'go'},

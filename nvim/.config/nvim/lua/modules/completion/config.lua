@@ -11,7 +11,7 @@ function config.coq()
         keymap = { 
             recommended = false,
             pre_select = true,
-            jump_to_mark = "<Tab>"
+            jump_to_mark = "<c-o>"
         }
     }
 end
@@ -131,7 +131,7 @@ function config.telescope()
             }
         }
         require('telescope').load_extension('fzy_native')
-        require('telescope').load_extension('dap')
+        -- require('telescope').load_extension('dap')
     --  require'telescope'.load_extension('dotfiles')
     --  require'telescope'.load_extension('gosource')
 end

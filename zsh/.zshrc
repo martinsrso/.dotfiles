@@ -132,3 +132,9 @@ fif() {
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias luamake=/Users/rafael.martins/tmp/lua-language-server/3rd/luamake/luamake
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc'; fi
