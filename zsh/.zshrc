@@ -10,7 +10,7 @@ alias vi="nvim"
 alias ll="ls -l"
 alias la="ls -la"
 alias lt="ls --tree"
-alias ls="exa --icons -g"
+alias ls="exa -g"
 alias reload="source ~/.zshrc"
 
 ### Added by Zinit's installer

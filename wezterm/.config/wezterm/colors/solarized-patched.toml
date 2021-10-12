@@ -1,0 +1,17 @@
+# solarized-patched
+[colors]
+foreground = "#708284"
+background = "#001e27"
+cursor_bg = "#708284"
+cursor_border = "#708284"
+cursor_fg = "#002831"
+selection_bg = "#002831"
+selection_fg = "#819090"
+
+# ansi = ["black", "maroon", "green", "olive", "navy", "purple", "teal", "silver"],
+# ansi = ["#073642","#dc322f","#859900","#b58900","#268bd2","#d33682","#2aa198","#eee8d5"]
+
+# brights = ["#475b62","#bd3613","#475b62","#536870","#708284","#5956ba","#819090","#fcf4dc"]
+#
+ansi = ["#000000","#bb0000","#00bb00","#bbbb00","#0000bb","#bb00bb","#00bbbb","#bbbbbb"]
+brights = ["#555555","#ff5555","#55ff55","#ffff55","#5555ff","#ff55ff","#55ffff","#ffffff"
