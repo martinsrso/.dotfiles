@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm';
 return {
-  font = wezterm.font("Ubuntu Mono",  {weight="Regular", italic=false}),
+  font = wezterm.font("UbuntuMono Nerd Font Mono",  {weight="Regular", italic=false}),
   font_size = 19.0,
   color_scheme_dirs = {"./colors/"},
   color_scheme = "solarized-patched",
