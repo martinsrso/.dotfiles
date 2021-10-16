@@ -1,3 +1,4 @@
+export TERM='xterm-256color'
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -12,6 +13,7 @@ alias la="ls -la"
 alias lt="ls --tree"
 alias ls="exa -g"
 alias reload="source ~/.zshrc"
+alias luamake=/Users/rafael.martins/tmp/lua-language-server/3rd/luamake/luamake
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
@@ -25,6 +27,7 @@ source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
+setopt auto_cd
 # if [ -z "$TMUX" ]
 # then
 #     tmux attach -t work || tmux new -s work
@@ -38,8 +41,8 @@ zinit snippet OMZ::lib/history.zsh
 
 zinit snippet OMZ::lib/key-bindings.zsh
 
-# zinit ice wait lucid
-# zinit snippet OMZ::lib/completion.zsh
+#zinit ice wait lucid
+#zinit snippet OMZ::lib/completion.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::lib/grep.zsh
@@ -51,8 +54,8 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/colored-man-pages/colored-man-pages.plugin.zsh
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+#zinit ice wait lucid
+#zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 
 zinit ice wait lucid
 zinit snippet OMZ::plugins/extract/extract.plugin.zsh
@@ -80,6 +83,7 @@ zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_z
 zinit light zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=false
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
 
 zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
 zinit light zdharma/history-search-multi-word
@@ -128,13 +132,11 @@ fif() {
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-alias luamake=/Users/rafael.martins/tmp/lua-language-server/3rd/luamake/luamake
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc'; fi
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+

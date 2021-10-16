@@ -1,4 +1,4 @@
-local global = require('core.global')
+local global = require('global')
 
 local function bind_option(options)
   for k, v in pairs(options) do
@@ -13,9 +13,8 @@ end
 local function load_options()
   local global_local = {
     termguicolors  = true;
-    mouse          = "nv"; 
-    errorbells     = true; 
-    visualbell     = true;
+    mouse          = "nvi"; 
+    cursorline     = true;
     hidden         = true;
     fileformats    = "unix,mac,dos";
     virtualedit    = "block";
@@ -50,7 +49,7 @@ local function load_options()
     splitright     = true;
     switchbuf      = "useopen";
     diffopt        = "filler,iwhite,internal,algorithm:patience";
-    completeopt    = "menuone,noselect,noinsert";
+    -- completeopt    = "menuone,noselect,noinsert";
     jumpoptions    = "stack";
     showmode       = false;
     shortmess      = "aoOTIcF";
@@ -75,8 +74,9 @@ local function load_options()
     pumblend       = 5;
     winblend       = 0;
     wildoptions    = "pum";
+    -- errorbells     = true; 
+    -- visualbell     = true;
     guicursor      = "i:block";
-    cursorline     = true;
   }
 
   local bw_local  = {
@@ -88,7 +88,7 @@ local function load_options()
     shiftwidth     = 2;
     softtabstop    = -1;
     breakindentopt = "shift:2,min:20";
-    -- wrap           = false;
+    wrap           = false;
     linebreak      = true;
     relativenumber = true;
     colorcolumn    = 120;
@@ -120,4 +120,3 @@ local function load_options()
 end
 
 load_options()
-

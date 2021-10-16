@@ -16,13 +16,13 @@ end
 function autocmd.load_autocmds()
     local definitions = {
         packer = {
-          {"BufWritePost","*.lua","lua require('core.pack').auto_compile()"};
+          {"BufWritePost","plugins.lua","source <afile> | PackerCompile"};
         },
 
         bufs = {
             {'BufReadPost', '*', [[if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]};
             -- Reload vim config automatically
-            {"BufWritePost",[[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]]};
+            {"BufWritePost",[[$VIM_PATH/{*.vim,vimrc} nested source $MYVIMRC | redraw]]};
             -- Reload Vim script automatically if setlocal autoread
             {"BufWritePost,FileWritePost","*.vim", [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]]};
             {"BufWritePre","/tmp/*","setlocal noundofile"};
@@ -63,4 +63,3 @@ function autocmd.load_autocmds()
 end
 
 autocmd.load_autocmds()
-
