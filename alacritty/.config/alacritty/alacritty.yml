@@ -1,8 +1,8 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Setup term for programs to be able to use it
-import:
-  - "/Users/rafael.martins/.config/alacritty/colors/dimmed.yml"
+#import:
+#  - "/Users/rafael.martins/.config/alacritty/colors/dimmed.yml"
 
 env:
   TERM: xterm256-color
@@ -11,8 +11,8 @@ window:
   dynamic_padding: true
   startup_mode: Maximized
   padding:
-    x: 10
-    y: 10
+    x: 0
+    y: 0
 
       #shell:
       #program: /usr/local/bin/zsh
@@ -53,21 +53,21 @@ font:
     # Font name
     #family: JetBrains Mono
     # family: Monaco
-    family: Monaco
+    family: Hack Nerd Font
     style: Regular
 
   # The bold font face
   bold:
-    family: Monaco
-    style: SemiBold
+    family: Hack Nerd Font
+    style: Bold
 
   # The italic font face
   italic:
-    family: Monaco
-    style: Regular Italic
+    family: Hack Nerd Font
+    style: Italic
 
   # Font size
-  size: 17.0
+  size: 25.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing
@@ -110,41 +110,41 @@ font:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-bell:
-  animation: EaseOutExpo
-  duration: 100
-  color: '0xffffff'
+# bell:
+#   animation: EaseOutExpo
+#   duration: 100
+#   color: '0xffffff'
 
 window.dynamic_title: true
 
 # Colors (Solarized Dark)
-#colors:
-#  # Default colors
-#  primary:
-#    background: '0x002b36'
-#    foreground: '0x839496'
-#
-#  # Normal colors
-#  normal:
-#    black:   '0x073642'
-#    red:     '0xdc322f'
-#    green:   '0x859900'
-#    yellow:  '0xb58900'
-#    blue:    '0x268bd2'
-#    magenta: '0xd33682'
-#    cyan:    '0x2aa198'
-#    white:   '0xeee8d5'
-#
-#  # Bright colors
-#  bright:
-#    black:   '0x002b36'
-#    red:     '0xcb4b16'
-#    green:   '0x586e75'
-#    yellow:  '0x657b83'
-#    blue:    '0x839496'
-#    magenta: '0x6c71c4'
-#    cyan:    '0x93a1a1'
-#    white:   '0xfdf6e3'
+colors:
+  # Default colors
+  primary:
+    background: '0x002b36'
+    foreground: '0x839496'
+
+  # Normal colors
+  normal:
+    black:   '0x073642'
+    red:     '0xdc322f'
+    green:   '0x859900'
+    yellow:  '0xb58900'
+    blue:    '0x268bd2'
+    magenta: '0xd33682'
+    cyan:    '0x2aa198'
+    white:   '0xeee8d5'
+
+  # Bright colors
+  bright:
+    black:   '0x002b36'
+    red:     '0xcb4b16'
+    green:   '0x586e75'
+    yellow:  '0x657b83'
+    blue:    '0x839496'
+    magenta: '0x6c71c4'
+    cyan:    '0x93a1a1'
+    white:   '0xfdf6e3'
 
 key_bindings:
   # - { key: L,         mods: Control,              action: None  }

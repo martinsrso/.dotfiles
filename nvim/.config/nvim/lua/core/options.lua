@@ -1,4 +1,4 @@
-local global = require('global')
+local global = require('core.global')
 
 local function bind_option(options)
   for k, v in pairs(options) do
@@ -14,7 +14,8 @@ local function load_options()
   local global_local = {
     termguicolors  = true;
     mouse          = "nvi"; 
-    cursorline     = true;
+    errorbells     = true; 
+    visualbell     = true;
     hidden         = true;
     fileformats    = "unix,mac,dos";
     virtualedit    = "block";
@@ -49,7 +50,7 @@ local function load_options()
     splitright     = true;
     switchbuf      = "useopen";
     diffopt        = "filler,iwhite,internal,algorithm:patience";
-    -- completeopt    = "menuone,noselect,noinsert";
+    completeopt    = "menu,menuone,noselect";
     jumpoptions    = "stack";
     showmode       = false;
     shortmess      = "aoOTIcF";
@@ -74,9 +75,8 @@ local function load_options()
     pumblend       = 5;
     winblend       = 0;
     wildoptions    = "pum";
-    -- errorbells     = true; 
-    -- visualbell     = true;
     guicursor      = "i:block";
+    cursorline     = true;
   }
 
   local bw_local  = {
@@ -111,7 +111,7 @@ local function load_options()
       cache_enabled = 0
     }
     vim.g.python_host_prog = '/usr/bin/python2'
-    vim.g.python3_host_prog = '/usr/local/bin/python3.9'
+    vim.g.python3_host_prog = '$HOME/.pyenv/shims/python'
   end
   for name, value in pairs(global_local) do
     vim.o[name] = value
@@ -120,3 +120,4 @@ local function load_options()
 end
 
 load_options()
+

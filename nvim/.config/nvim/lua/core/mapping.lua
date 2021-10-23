@@ -20,11 +20,13 @@ local def_map = {
     ["n|;;"]          = map_cmd('<ESC>'),
     ["n|;q"]          = map_cmd(':q<CR>'),
     ["n|;w"]          = map_cmd(':wa<CR>'),
-    
-    ["n|<Leader>bp"] = map_cu('bp'):with_noremap(),
-    ["n|<Leader>bn"] = map_cu('bn'):with_noremap(),
+    -- ["n|]w"]         = map_cu('WhitespaceNext'):with_noremap(),
+    -- ["n|[w"]         = map_cu('WhitespacePrev'):with_noremap(),
+    ["n|<Leader>bp"]         = map_cu('bp'):with_noremap(),
+    ["n|<Leader>bn"]         = map_cu('bn'):with_noremap(),
     ["n|<Leader>bd"] = map_cu('bd'):with_noremap(),
-
+    -- ["n|<Leader>cn"] = map_cu('COQnow'):with_noremap(),
+    -- ["n|<Leader>cw"]  = map_cu([[silent! keeppatterns %substitute/\s\+$//e]]):with_noremap():with_silent(),
     ["n|<C-h>"]      = map_cmd('<C-w>h'):with_noremap(),
     ["n|<C-l>"]      = map_cmd('<C-w>l'):with_noremap(),
     ["n|<C-j>"]      = map_cmd('<C-w>j'):with_noremap(),
@@ -33,6 +35,8 @@ local def_map = {
     ["n|<A-]>"]      = map_cr('vertical resize +5'):with_silent(),
     ["n|<C-q>"]      = map_cmd(':wq<CR>'),
     ["n|<C-s>"]      = map_cmd(':w<CR>'),
+    ["n|<Leader>ss"] = map_cu('SessionSave'):with_noremap(),
+    ["n|<Leader>sl"] = map_cu('SessionLoad'):with_noremap(),
     -- Insert
     ["i|<C-w>"]      = map_cmd('<C-[>diwa'):with_noremap(),
     ["i|<C-h>"]      = map_cmd('<BS>'):with_noremap(),
@@ -57,3 +61,4 @@ local def_map = {
 }
 
 bind.nvim_load_mapping(def_map)
+

@@ -83,7 +83,7 @@ zinit ice depth=1 wait lucid compile"{src/*.zsh,src/strategies/*.zsh}" atload"_z
 zinit light zsh-users/zsh-autosuggestions
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_MANUAL_REBIND=false
-# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
 
 zinit ice depth=1 wait"1" lucid atinit"zstyle ':history-search-multi-word' page-size '20'"
 zinit light zdharma/history-search-multi-word
@@ -132,11 +132,16 @@ fif() {
   rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
 }
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rafael.martins/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$(pyenv init -)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rafael.martins/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rafael.martins/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rafael.martins/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rafael.martins/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

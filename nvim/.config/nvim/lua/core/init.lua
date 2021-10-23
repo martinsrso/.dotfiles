@@ -1,4 +1,4 @@
-local global = require 'global'
+local global = require 'core.global'
 local vim = vim
 
 -- Create cache dir and subs dir
@@ -25,7 +25,6 @@ end
 local disable_distribution_plugins= function()
     vim.g.loaded_gzip              = 1
     vim.g.loaded_tar               = 1
-    vim.g.loaded_man               = 1
     vim.g.loaded_tarPlugin         = 1
     vim.g.loaded_zip               = 1
     vim.g.loaded_zipPlugin         = 1
@@ -48,27 +47,28 @@ local leader_map = function()
   vim.g.mapleader = " "
   vim.api.nvim_set_keymap('n',' ','',{noremap = true})
   vim.api.nvim_set_keymap('x',' ','',{noremap = true})
-  vim.api.nvim_set_keymap('i','kk','<ESC>',{noremap = true})
+  vim.api.nvim_set_keymap('i','jk','<ESC>',{noremap = true})
 end
 
-local plugins_load_compile = function()
-    vim.cmd [[command! PackerInstall packadd packer.nvim | lua require('plugins').install()]]
-    vim.cmd [[command! PackerUpdate packadd packer.nvim | lua require('plugins').update()]]
-    vim.cmd [[command! PackerSync packadd packer.nvim | lua require('plugins').sync()]]
-    vim.cmd [[command! PackerClean packadd packer.nvim | lua require('plugins').clean()]]
-    vim.cmd [[command! PackerCompile packadd packer.nvim | lua require('plugins').compile()]]
+local colorscheme = function()
+    -- vim.cmd('let g:neosolarized_termtrans = 1')
+    vim.cmd([[let g:solarized_diffmode = 'normal']])
+    vim.cmd('colorscheme NeoSolarized')
 end
 
 local load_core = function()
+    local pack = require('core.pack')
+    colorscheme()
     createdir()
     disable_distribution_plugins()
     leader_map()
 
-    require('options')
-    require('mapping')
+    pack.ensure_plugins()
+    require('core.options')
+    require('core.mapping')
     require('keymap')
-    require('event')
-    plugins_load_compile()
+    require('core.event')
+    pack.load_compile()
 end
 
 load_core()
