@@ -1,4 +1,4 @@
-local global = require('core.global')
+-- local global = require('core.global')
 
 local function bind_option(options)
   for k, v in pairs(options) do
@@ -26,11 +26,11 @@ local function load_options()
     backup         = false;
     writebackup    = false;
     swapfile       = false;
-    directory      = global.cache_dir .. "swag/";
-    undodir        = global.cache_dir .. "undo/";
-    backupdir      = global.cache_dir .. "backup/";
-    viewdir        = global.cache_dir .. "view/";
-    spellfile      = global.cache_dir .. "spell/en.uft-8.add";
+    -- directory      = global.cache_dir .. "swag/";
+    -- undodir        = global.cache_dir .. "undo/";
+    -- backupdir      = global.cache_dir .. "backup/";
+    -- viewdir        = global.cache_dir .. "view/";
+    -- spellfile      = global.cache_dir .. "spell/en.uft-8.add";
     history        = 2000;
     shada          = "!,'300,<50,@100,s10,h";
     backupskip     = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
@@ -97,7 +97,7 @@ local function load_options()
     concealcursor  = "niv";
   }
 
-  if global.is_mac then
+  -- if global.is_mac then
     vim.g.clipboard = {
       name = "macOS-clipboard",
       copy = {
@@ -112,7 +112,7 @@ local function load_options()
     }
     vim.g.python_host_prog = '/usr/bin/python2'
     vim.g.python3_host_prog = '$HOME/.pyenv/shims/python'
-  end
+  -- end
   for name, value in pairs(global_local) do
     vim.o[name] = value
   end

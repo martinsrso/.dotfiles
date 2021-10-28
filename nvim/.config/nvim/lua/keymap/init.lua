@@ -19,6 +19,17 @@ local plug_map = {
     ["n|<leader>llo"]     = map_cr("LspLog"):with_noremap():with_silent():with_nowait(),
     ["n|<leader>llr"]     = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 
+  --[[ buf_keymap(0, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gi', '<cmd>lua require"telescope.builtin".lsp_implementations()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gS', '<cmd>lua vim.lsp.buf.signature_help()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gTD', '<cmd>lua vim.lsp.buf.type_definition()<CR>', keymap_opts)
+  buf_keymap(0, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', keymap_opts)
+  buf_keymap(0, 'n', 'gA', '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>', keymap_opts)
+  buf_keymap(0, 'n', ']e', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', keymap_opts)
+  buf_keymap(0, 'n', '[e', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', keymap_opts) ]]
     ["n|gd"]             = map_cr('<cmd>lua vim.lsp.buf.definition()<CR>'):with_noremap():with_silent(),
     ["n|[e"]             = map_cr('Lspsaga diagnostic_jump_next'):with_noremap():with_silent(),
     ["n|]e"]             = map_cr('Lspsaga diagnostic_jump_prev'):with_noremap():with_silent(),
@@ -63,21 +74,21 @@ local plug_map = {
     ["v|<Leader>fz"]     = map_cr('Farf'):with_noremap():with_silent();
     -- Plugin Telescope
     -- Files
-    ["n|<Leader>ff"]     = map_cu('Telescope find_files'):with_noremap():with_silent(),
-    ["n|<Leader>gf"]     = map_cu('Telescope git_files'):with_noremap():with_silent(),
-    ["n|<Leader>rg"]     = map_cu('Telescope grep_string'):with_noremap():with_silent(),
-    ["n|<Leader>lr"]     = map_cu('Telescope live_grep'):with_noremap():with_silent(),
-    ["n|<Leader>fb"]     = map_cu('Telescope file_browser'):with_noremap():with_silent(),
+    ["n|<Leader>hh"]     = map_cu('Telescope find_files theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>gh"]     = map_cu('Telescope git_files theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>rg"]     = map_cu('Telescope grep_string theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>lr"]     = map_cu('Telescope live_grep theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>fb"]     = map_cu('Telescope file_browser theme=ivy'):with_noremap():with_silent(),
     -- Vim picker
-    ["n|<Leader>bb"]     = map_cu('Telescope buffers'):with_noremap():with_silent(),
-    ["n|<Leader>cm"]     = map_cu('Telescope commands'):with_noremap():with_silent(),
-    ["n|<Leader>of"]     = map_cu('Telescope oldfiles'):with_noremap():with_silent(),
-    ["n|<Leader>qf"]     = map_cu('Telescope quickfix'):with_noremap():with_silent(),
-    ["n|<Leader>ch"]     = map_cu('Telescope command_history'):with_noremap():with_silent(),
+    ["n|<Leader>bb"]     = map_cu('Telescope buffers theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>cm"]     = map_cu('Telescope commands theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>of"]     = map_cu('Telescope oldfiles theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>qf"]     = map_cu('Telescope quickfix theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>ch"]     = map_cu('Telescope command_history theme=ivy'):with_noremap():with_silent(),
     -- Lsp
-    ["n|<Leader>ws"]     = map_cu('Telescope lsp_workspace_symbols'):with_noremap():with_silent(),
-    ["n|<Leader>dd"]     = map_cu('Telescope lsp_document_diagnostics'):with_noremap():with_silent(),
-    ["n|<Leader>wd"]     = map_cu('Telescope lsp_workspace_diagnostics'):with_noremap():with_silent(),
+    ["n|<Leader>ws"]     = map_cu('Telescope lsp_workspace_symbols theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>dd"]     = map_cu('Telescope lsp_document_diagnostics theme=ivy'):with_noremap():with_silent(),
+    ["n|<Leader>wd"]     = map_cu('Telescope lsp_workspace_diagnostics theme=ivy'):with_noremap():with_silent(),
     -- Git
     ["n|<Leader>gc"]     = map_cu('Telescope git_commits'):with_noremap():with_silent(),
     ["n|<Leader>gbc"]     = map_cu('Telescope git_bcommits'):with_noremap():with_silent(),
@@ -88,8 +99,8 @@ local plug_map = {
     ["n|<Leader>fh"]     = map_cu('DashboardFindHistory'):with_noremap():with_silent(),
     ["n|<Leader>ff"]     = map_cu('DashboardFindFile'):with_noremap():with_silent(), ]]
     -- Plugin acceleratedjk
-    ["n|j"]              = map_cmd('v:lua.enhance_jk_move("j")'):with_silent():with_expr(),
-    ["n|k"]              = map_cmd('v:lua.enhance_jk_move("k")'):with_silent():with_expr(),
+    -- ["n|j"]              = map_cmd('v:lua.enhance_jk_move("j")'):with_silent():with_expr(),
+    -- ["n|k"]              = map_cmd('v:lua.enhance_jk_move("k")'):with_silent():with_expr(),
     -- Plugin Vista
     ["n|<Leader>v"]      = map_cu('Vista!!'):with_noremap():with_silent(),
     -- Plugin hrsh7th/vim-eft
