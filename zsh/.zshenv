@@ -1,6 +1,15 @@
 # Enviroment variables
 VIM="nvim"
 
+# alias
+alias vi="nvim"
+alias ll="ls -l"
+alias la="ls -la"
+alias lt="ls --tree"
+alias ls="lsd"
+alias reload="source ~/.zshrc"
+alias luamake=/Users/rafael.martins/tmp/lua-language-server/3rd/luamake/luamake
+
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 #Homebrew's sbin export PATH="/usr/local/sbin:$PATH"
