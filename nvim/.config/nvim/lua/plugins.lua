@@ -29,7 +29,25 @@ local function init()
 
   -- lsp
   use 'kosayoda/nvim-lightbulb'
-  use 'folke/trouble.nvim'
+  use {
+    'folke/trouble.nvim',
+    config = function() 
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        signs = {
+            -- icons / text used for a diagnostic
+            error = "",
+            warning = "",
+            hint = "",
+            information = "",
+            other = "﫠"
+        },
+        use_lsp_diagnostic_signs = true -- enabling this will use the signs defined in your lsp client
+      }
+    end
+  }
   use 'ray-x/lsp_signature.nvim'
   use {
     'neovim/nvim-lspconfig',
@@ -109,7 +127,7 @@ local function init()
     requires = 'nvim-lua/plenary.nvim',
   }
 
-  --[[ use {
+  use {
     "projekt0n/github-nvim-theme",
     after = "lualine.nvim",
     config = function()
@@ -118,33 +136,35 @@ local function init()
         theme_style = "light",
       }
     end,
-  } ]]
-      
-      -- use { 'akinsho/nvim-toggleterm.lua',
-      --   config = conf.toggleterm,
-      -- }
-      
-    --   use { 'windwp/nvim-autopairs',
-    --     event = 'InsertEnter',
-    --     config = function()
-    --         require "autopairs".setup {}
-    --     end
-    --   }
-      
+  }
+
+  -- use { 'akinsho/nvim-toggleterm.lua',
+  --   config = conf.toggleterm,
+  -- }
+
+  use { 'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = function()
+        require "nvim-autopairs".setup ({
+          disable_filetype = { "TelescopePrompt", "NvimTree" }
+        })
+    end
+  }
+
   use { 
     'iamcco/markdown-preview.nvim',
     config = [[require('config.markdown_preview')]],
     ft = 'markdown',
     run = [[sh -c 'cd app && yarn install']],
   }
-      
+
   use { 'b3nj5m1n/kommentary',
-    event = 'BufReadPre'
-  }
-      
-  use { "simrat39/symbols-outline.nvim",
-    event = 'BufReadPre',
-    cmd = {"SymbolsOutline"}
+  event = 'BufReadPre'
+}
+
+use { "simrat39/symbols-outline.nvim",
+event = 'BufReadPre',
+cmd = {"SymbolsOutline"}
   }
 
   -- ui 
@@ -157,13 +177,13 @@ local function init()
     },
     config = [[require('config.lualine')]],
   }
-  
+
   use { 
     'akinsho/nvim-bufferline.lua',
     requires = 'kyazdani42/nvim-web-devicons',
     config = [[require('config.bufferline')]],
   }
-      
+
   use { 
     'lewis6991/gitsigns.nvim',
     event = {'BufRead','BufNewFile'},
@@ -172,10 +192,10 @@ local function init()
   }
 
   -- editor
-    --   use { 'rhysd/accelerated-jk',
-    --     opt = true
-    --   }
-      
+  --   use { 'rhysd/accelerated-jk',
+  --     opt = true
+  --   }
+
   use { 
     'norcalli/nvim-colorizer.lua',
     ft = {'html','css','sass','vim','typescript','typescriptreact', 'lua'},

@@ -1,4 +1,5 @@
 local api = vim.api
+local format = require('config.format')
 
 function _G.reload_lsp()
   vim.lsp.stop_client(vim.lsp.get_active_clients())
@@ -13,6 +14,13 @@ end
 vim.cmd('command! -nargs=0 LspLog call v:lua.open_lsp_log()')
 vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
 
+local signs = {
+    Error = " ",
+    Warn = " ",
+    Hint = " ",
+    Info = " "
+}
+
 -- local enhance_attach = function(client,bufnr)
 --   local keymap_opts = { noremap = true, silent = true }
 --   print(vim.inspect(client.resolved_capabilities.document_formatting))
@@ -23,7 +31,7 @@ vim.cmd('command! -nargs=0 LspRestart call v:lua.reload_lsp()')
 -- end
 
 local lspconfig = require 'lspconfig'
-local trouble = require 'trouble'
+-- local trouble = require 'trouble'
 local lsp_status = require 'lsp-status'
 local lspkind = require 'lspkind'
 local null_ls = require 'null-ls'
@@ -63,6 +71,7 @@ local null_fmt = null_ls.builtins.formatting
 local null_diag = null_ls.builtins.diagnostics
 null_ls.config {
   sources = {
+    null_fmt.goimports,
     null_fmt.terraform_fmt,
     null_fmt.clang_format,
     null_fmt.cmake_format,
@@ -79,11 +88,12 @@ null_ls.config {
   },
 }
 
-local sign_define = vim.fn.sign_define
-sign_define('DiagnosticSignError', { text = '', numhl = 'RedSign' })
+--[[ local sign_define = vim.fn.sign_define
+sign_define('LspDiagnosticsSignError', { text = '', numhl = 'RedSign' })
 sign_define('DiagnosticSignWarn', { text = '', numhl = 'YellowSign' })
 sign_define('DiagnosticSignInfo', { text = '', numhl = 'WhiteSign' })
 sign_define('DiagnosticSignHint', { text = '', numhl = 'BlueSign' })
+ ]]
 lsp_status.config {
   kind_labels = kind_symbols,
   select_symbol = function(cursor_pos, symbol)
@@ -101,15 +111,20 @@ lsp_status.config {
 
 lsp_status.register_progress()
 lspkind.init { symbol_map = kind_symbols }
-trouble.setup()
+-- trouble.setup()
 lsp.handlers['textDocument/publishDiagnostics'] = lsp.with(lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   update_in_insert = false,
   underline = true,
 })
 
-require('lsp_signature').setup { bind = true, handler_opts = { border = 'single' } }
+for type, icon in pairs(signs) do
+    local hl = "LspDiagnosticsSign" .. type
+    vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
+
+require('lsp_signature').setup { bind = true, handler_opts = { border = 'single' }, toggle_key = ";3" }
 local keymap_opts = { noremap = true, silent = true }
 local function on_attach(client)
   lsp_status.on_attach(client)
@@ -119,6 +134,7 @@ local function on_attach(client)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
     buf_keymap(0, 'n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>', keymap_opts)
+    -- format.lsp_before_save()
   end
 
   cmd 'augroup lsp_aucmds'
@@ -134,6 +150,21 @@ end
 local servers = {
   terraformls = {},
   bashls = {},
+  gopls = {
+    cmd = {'gopls'},
+    -- for postfix snippets and analyzers
+    capabilities = capabilities,
+    settings = {
+      gopls = {
+        experimentalPostfixCompletions = true,
+        analyses = {
+          unusedparams = true,
+          shadow = true,
+        },
+        staticcheck = true,
+      },
+    },
+  },
   clangd = {
     cmd = {
       'clangd', -- '--background-index',
@@ -197,3 +228,4 @@ for server, config in pairs(servers) do
   )
   lspconfig[server].setup(config)
 end
+

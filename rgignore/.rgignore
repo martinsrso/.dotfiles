@@ -123,5 +123,5 @@ notes
 /Library/
 /Downloads/
 .zip
-vendor/
+vendor/**
 go.sum

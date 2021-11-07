@@ -38,6 +38,7 @@ local def_map = {
     ["n|<Leader>ss"] = map_cu('SessionSave'):with_noremap(),
     ["n|<Leader>sl"] = map_cu('SessionLoad'):with_noremap(),
     -- Insert
+    -- ["i|<Leader>"]   = map_cmd(''),
     ["i|<C-w>"]      = map_cmd('<C-[>diwa'):with_noremap(),
     ["i|<C-h>"]      = map_cmd('<BS>'):with_noremap(),
     ["i|<C-d>"]      = map_cmd('<Del>'):with_noremap(),
