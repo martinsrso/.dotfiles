@@ -6,7 +6,7 @@ alias vi="nvim"
 alias ll="ls -l"
 alias la="ls -la"
 alias lt="ls --tree"
-alias ls="lsd"
+alias ls="exa --icons --header"
 alias reload="source ~/.zshrc"
 alias luamake=/Users/rafael.martins/tmp/lua-language-server/3rd/luamake/luamake
 
@@ -32,7 +32,8 @@ export GIT_EDITOR="nvim"
 export REACT_EDITOR="nvim"
 
 # Bat
-export BAT_THEME="Solarized (dark)"
+export BAT_THEME="Solarized (light)"
+ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#b3b3b3'
 
 # Fzf
 export FZF_COMPLETION_TRIGGER='**'
@@ -40,3 +41,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS='--height 90% --layout reverse --border --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254 --color info:254,prompt:37,spinner:108,pointer:235,marker:235  --inline-info'
 # export FZF_DEFAULT_OPTS='--height 90% --layout reverse --border --color dark,hl:33,hl+:37,fg+:235,bg+:136,fg+:254 --color info:254,prompt:37,spinner:108,pointer:235,marker:235 --preview "bat --color=always --style=plain {}"'
+
+export JDTLS_HOME="/Users/rafael.martins/.local/jdt-language-server"
+export LOMBOK_JAR="/Users/rafael.martins/.local/lombok/lombok.jar"
+
+export ZSH_CACHE_DIR="$HOME/.zsh_cache"
+# export SDKMAN_DIR="/home/rafael.martins/.sdkman"
+. "$HOME/.cargo/env"

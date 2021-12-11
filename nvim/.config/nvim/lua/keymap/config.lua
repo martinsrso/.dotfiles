@@ -9,21 +9,3 @@ _G.enhance_jk_move = function(key)
   local map = key == 'j' and '<Plug>(accelerated_jk_gj)' or '<Plug>(accelerated_jk_gk)'
   return t(map)
 end
-
-_G.enhance_ft_move = function(key)
-  if not packer_plugins['vim-eft'].loaded then
-    vim.cmd [[packadd vim-eft]]
-  end
-  local map = {
-    f = '<Plug>(eft-f)',
-    F = '<Plug>(eft-F)',
-    [';'] = '<Plug>(eft-repeat)'
-  }
-  return t(map[key])
-end
-
-_G.check_back_space = function()
-    local col = vim.fn.col(".") - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
-end
-

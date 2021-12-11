@@ -1,4 +1,4 @@
--- local global = require('core.global')
+local global = require('core.global')
 
 local function bind_option(options)
   for k, v in pairs(options) do
@@ -9,14 +9,13 @@ local function bind_option(options)
     end
   end
 end
-
+  
 local function load_options()
   local global_local = {
     termguicolors  = true;
-    mouse          = "nvi"; 
+    mouse          = "nv"; 
     errorbells     = true; 
     visualbell     = true;
-    hidden         = true;
     fileformats    = "unix,mac,dos";
     virtualedit    = "block";
     viewoptions    = "folds,cursor,curdir";
@@ -26,11 +25,11 @@ local function load_options()
     backup         = false;
     writebackup    = false;
     swapfile       = false;
-    -- directory      = global.cache_dir .. "swag/";
-    -- undodir        = global.cache_dir .. "undo/";
-    -- backupdir      = global.cache_dir .. "backup/";
-    -- viewdir        = global.cache_dir .. "view/";
-    -- spellfile      = global.cache_dir .. "spell/en.uft-8.add";
+    directory      = global.cache_dir .. "swag/";
+    undodir        = global.cache_dir .. "undo/";
+    backupdir      = global.cache_dir .. "backup/";
+    viewdir        = global.cache_dir .. "view/";
+    spellfile      = global.cache_dir .. "spell/en.uft-8.add";
     history        = 2000;
     shada          = "!,'300,<50,@100,s10,h";
     backupskip     = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim";
@@ -91,6 +90,7 @@ local function load_options()
     wrap           = false;
     linebreak      = true;
     relativenumber = true;
+    number         = true;
     colorcolumn    = 120;
     signcolumn     = "yes";
     conceallevel   = 2;
@@ -98,26 +98,26 @@ local function load_options()
   }
 
   -- if global.is_mac then
-    vim.g.clipboard = {
-      name = "macOS-clipboard",
-      copy = {
-        ["+"] = "pbcopy",
-        ["*"] = "pbcopy",
-      },
-      paste = {
-        ["+"] = "pbpaste",
-        ["*"] = "pbpaste",
-      },
-      cache_enabled = 0
-    }
-    vim.g.python_host_prog = '/usr/bin/python2'
-    vim.g.python3_host_prog = '$HOME/.pyenv/shims/python'
+  vim.g.clipboard = {
+    name = "macOS-clipboard",
+    copy = {
+      ["+"] = "pbcopy",
+      ["*"] = "pbcopy",
+    },
+    paste = {
+      ["+"] = "pbpaste",
+      ["*"] = "pbpaste",
+    },
+    cache_enabled = 0
+  }
+  vim.g.python_host_prog = '/usr/bin/python2'
+  vim.g.python3_host_prog = '$HOME/.pyenv/shims/python'
   -- end
   for name, value in pairs(global_local) do
     vim.o[name] = value
   end
+
   bind_option(bw_local)
 end
 
 load_options()
-

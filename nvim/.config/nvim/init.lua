@@ -1,31 +1,46 @@
-if require('packer_download')() then
-    require('plugins').sync()
-    return
+--load impatient first
+local present, impatient = pcall(require, "impatient")
+if present then
+   -- NOTE: currently broken, will fix soon
+   -- impatient.enable_profile()
 end
 
-require "impatient"
--- require "profile"
+--disable builtin plugins
+local disabled_built_ins = {
+   "2html_plugin",
+   "getscript",
+   "getscriptPlugin",
+   "gzip",
+   "logipat",
+   "netrw",
+   "netrwPlugin",
+   "netrwSettings",
+   "netrwFileHandlers",
+   "matchit",
+   "tar",
+   "tarPlugin",
+   "rrhelper",
+   "spellfile_plugin",
+   "vimball",
+   "vimballPlugin",
+   "zip",
+   "zipPlugin",
+}
 
-local cmd = vim.cmd
+for _, plugin in pairs(disabled_built_ins) do
+   vim.g["loaded_" .. plugin] = 1
+end
 
-require('disable_builtin')
-require "globals"
-require("command")
+-- load options, mappings, and plugins
+local modules = {
+   -- "core",
+   -- "keymap",
+   -- "options",
+   -- "mappings",
+   -- "packer_commands",
+   -- "packer_compiled",
+}
 
-cmd [[set hidden]]
-
-vim.g.mapleader = " "
-vim.api.nvim_set_keymap('n',' ','',{noremap = true})
-vim.api.nvim_set_keymap('x',' ','',{noremap = true})
-vim.api.nvim_set_keymap('i','jk','<ESC>',{noremap = true})
--- imap <leader>
-
-require('event')
-require('mapping')
-require('options')
-require('keymap')
-
--- vim.cmd([[let g:solarized_diffmode = 'normal']])
--- vim.cmd('colorscheme NeoSolarized')
--- vim.cmd('let g:neosolarized_italic=1')
-vim.cmd('set background=light')
+for i = 1, #modules, 1 do
+   pcall(require, modules[i])
+end
