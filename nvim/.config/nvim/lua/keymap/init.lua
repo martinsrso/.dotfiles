@@ -15,11 +15,6 @@ local plug_map = {
     ["n|<leader>llo"]     = map_cr("LspLog"):with_noremap():with_silent():with_nowait(),
     ["n|<leader>llr"]     = map_cr("LspRestart"):with_noremap():with_silent():with_nowait(),
 
-  --[[   buf_keymap(0, 'n', 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions()<CR>', keymap_opts)
-  buf_keymap(0, 'n', 'gi', '<cmd>lua require"telescope.builtin".lsp_implementations()<CR>', keymap_opts)
-  buf_keymap(0, 'n', 'gr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', keymap_opts)
-  buf_keymap(0, 'n', 'gA', '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>', keymap_opts)
-  ]]
 
     ["n|gD"]             = map_cmd("<cmd>lua vim.lsp.buf.declaration()<CR>"):with_noremap():with_silent(),
     ["n|gd"]             = map_cmd("<cmd>lua vim.lsp.buf.definition()<CR>"):with_noremap():with_silent(),

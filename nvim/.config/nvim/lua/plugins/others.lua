@@ -18,6 +18,9 @@ M.colorizer = function()
     end
 end
 
+M.autopair = function ()
+end
+
 M.signature = function()
     local present, lspsignature = pcall(require, "lsp_signature")
     if present then
@@ -55,7 +58,7 @@ M.luasnip = function()
 end
 
 M.comment = function()
-    local present, comment = pcall(require, "Commment")
+    local present, comment = pcall(require, "Comment")
     if present then
        comment.setup {
           padding = true,

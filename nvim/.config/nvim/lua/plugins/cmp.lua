@@ -1,10 +1,12 @@
 local present, cmp = pcall(require, "cmp")
+local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 
-if not present then
+if not present or not present2 then
    return
 end
 
 vim.opt.completeopt = "menuone,noselect"
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 -- nvim-cmp setup
 cmp.setup {

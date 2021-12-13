@@ -24,6 +24,13 @@ local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 ts_config.setup {
    ensure_installed = { "lua", "rust", "java", "go" },
    indent = { enable = true },
+   context_commentstring = {
+      enable = true,
+      config = {
+        css = '// %s'
+        -- rust = "// %s"
+      }
+   },
    highlight = {
       enable = true,
       use_languagetree = true,

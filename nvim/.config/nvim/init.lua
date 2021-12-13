@@ -17,6 +17,7 @@ local disabled_built_ins = {
    "netrwSettings",
    "netrwFileHandlers",
    "matchit",
+   "matchparen",
    "tar",
    "tarPlugin",
    "rrhelper",
@@ -33,12 +34,12 @@ end
 
 -- load options, mappings, and plugins
 local modules = {
-   -- "core",
-   -- "keymap",
-   -- "options",
-   -- "mappings",
-   -- "packer_commands",
-   -- "packer_compiled",
+   "core",
+   "keymap",
+   "options",
+   "mappings",
+   "packer_commands",
+   "packer_compiled",
 }
 
 for i = 1, #modules, 1 do

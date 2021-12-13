@@ -73,6 +73,11 @@ return packer.startup(function()
    }
 
    use {
+     'JoosepAlviste/nvim-ts-context-commentstring',
+     after = "nvim-treesitter",
+  }
+
+   use {
       "lewis6991/gitsigns.nvim",
    }
 
@@ -110,7 +115,6 @@ return packer.startup(function()
 
    use {
       "numToStr/Comment.nvim",
-      after = "friendly-snippets",
       config = function()
          require("plugins.others").comment()
       end,
@@ -267,7 +271,7 @@ return packer.startup(function()
       end
    }
 
-   use { 
+   use {
       'iamcco/markdown-preview.nvim',
       config = [[require('config.markdown_preview')]],
       ft = 'markdown',
@@ -298,6 +302,8 @@ return packer.startup(function()
 
    use { 'tpope/vim-surround' }
    use { 'tpope/vim-fugitive', cmd = { 'Git', 'Gstatus', 'Gblame', 'Gpush', 'Gpull' }, disable = true }
+   use { 'mhinz/vim-startify' }
+   use { 'vim-test/vim-test' }
 
    use {
       "overcache/NeoSolarized",

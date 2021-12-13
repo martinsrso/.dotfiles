@@ -1,4 +1,5 @@
 bin/.local/include
 bin/.local/share
 bin/.local/lib
+.DS_Store
 

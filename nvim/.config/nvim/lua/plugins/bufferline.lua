@@ -20,7 +20,7 @@ bufferline.setup {
       view = "multiwindow",
       show_buffer_close_icons = false,
       separator_style = "thin",
-      always_show_bufferline = true,
+      always_show_bufferline = false,
       diagnostics = false, -- "or nvim_lsp"
       custom_filter = function(buf_number)
          -- Func to filter out our managed/persistent split terms

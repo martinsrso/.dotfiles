@@ -17,7 +17,7 @@ local function load_options()
     errorbells     = true; 
     visualbell     = true;
     fileformats    = "unix,mac,dos";
-    virtualedit    = "block";
+    -- virtualedit    = "block";
     viewoptions    = "folds,cursor,curdir";
     clipboard      = "unnamedplus";
     wildignorecase = true;
@@ -74,7 +74,7 @@ local function load_options()
     pumblend       = 5;
     winblend       = 0;
     wildoptions    = "pum";
-    guicursor      = "i:block";
+    guicursor      = "i:blinkwait700-blinkon400-blinkoff250";
     cursorline     = true;
   }
 
