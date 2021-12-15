@@ -1,0 +1,153 @@
+""" Editing and Reloading the Config
+set clipboard+=unnamed
+set clipboard+=ideaput
+set nu
+set relativenumber
+set scrolloff=5
+set showmode
+set ideastatusicon=gray
+set ideajoin
+set idearefactormode=keep
+set ignorecase
+
+""" Plugins
+set easymotion
+set multiple-cursors
+set highlightedyank
+set NERDTree
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+let g:NERDTreeQuitOnOpen=1
+
+let mapleader = " "
+
+""" The Escape button
+map <C-c> <Esc>
+imap kk <Esc>
+
+nnoremap \e :e ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap gcc :action CommentByLineComment<CR>
+vnoremap gc :action CommentByLineComment<CR>
+
+""" Some preferences shortcuts
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap Y y$
+nnoremap ;w :wa<CR>
+nnoremap ;q :q<CR>
+inoremap ;; <esc>$a;<esc>
+nnoremap ;; A;<cr><esc>
+nnoremap <leader>/ :nohls<return><esc>
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+""" Distraction Free Mode
+nmap <leader>a :action ToggleDistractionFreeMode<cr>
+
+" change font size
+nmap + :action EditorIncreaseFontSize<CR>
+nmap - :action EditorDecreaseFontSize<CR>
+nmap <leader>= :action EditorResetFontSize<CR>
+
+""" Terminal
+nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>te :action Terminal.OpenInTerminal<CR>
+
+""" Navigation
+nnoremap <c-\> :action SplitVertically<CR>
+nnoremap <c--> :action SplitHorizontally<CR>
+nnoremap <c-=> :action Unsplit<CR>
+nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+sethandler <c-l> a:vim
+sethandler <c-h> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <TAB> :action PreviousTab<CR>
+nnoremap <s-TAB> :action NextTab<CR>
+"" nnoremap <Leader>en :action EditSourceInNewWindow<CR>
+nnoremap <Leader>n :action NextWindow<CR>
+nnoremap <Leader>q :action CloseContent<CR>
+nnoremap <Leader>qa :action CloseAllEditors<CR>
+nnoremap <Leader>cc :action HideAllWindows<CR>
+vnoremap <Leader>s :action SelectAllOccurrences
+
+""" Editing source code
+nnoremap <c-o> :action Back<cr>
+nnoremap <c-i> :action Forward<cr>
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap zc :action CollapseRegion<CR>
+nnoremap zo :action ExpandRegion<CR>
+nnoremap <leader>zc :action CollapseAllRegions<CR>
+nnoremap <leader>zo :action ExpandAllRegions<CR>
+nnoremap <leader>c :action CommentByLineComment<CR>
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>
+nnoremap <Leader>rf  :action ReformatCode<CR>
+nnoremap <leader>bb :action RecentFiles<CR>
+nnoremap <leader>rl :action RecentLocations<CR>
+nnoremap <leader>h  :action LocalHistory.ShowHistory<CR>
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
+
+sethandler <leader>e a:vim
+nmap <leader>e :action GotoFile<CR>
+nmap ;t :action GotoTest<CR>
+nmap <leader>a :action FindInPath<CR>
+nmap gr :action ShowUsages<CR>
+nmap gi :action GotoImplementation<CR>
+nmap gs :action GotoSuperMethod<CR>
+
+nmap <leader>ri :action Inline<CR>
+nmap <leader>rr :action RenameElement<CR>
+nmap <leader>rev :action IntroduceVariable<CR>
+vmap <leader>rev :action IntroduceVariable<CR>
+nmap <leader>rem :action ExtractMethod<CR>
+vmap <leader>rem :action ExtractMethod<CR>
+nmap <leader>rv :action ShowIntentionActions<CR>
+nmap <leader>rm :action Move<CR>
+nmap <leader>ro :action OptimizeImports<CR>
+nmap <leader>rg :action Generate<CR>
+
+""" Running and Debugging
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,t :action ActivateRunToolWindow<CR>
+nnoremap ,u :action Rerun<CR>
+nnoremap ,f :action RerunFailedTests<CR>
+nnoremap ,b :action ToggleLineBreakpoint<CR>
+nnoremap ,d :action ContextDebug<CR>
+nnoremap ,n :action ActivateDebugToolWindow<CR>
+nnoremap ,sb :action StopBackgroundProcesses<CR>
+nnoremap ,s :action Stop<CR>
+
+""" java
+nmap <leader>nc :action NewClass<cr>
+nmap <leader>ni :action NewInterface<cr>
+nmap <leader>nd :action NewDir<cr>
+
+" VCS operations
+nmap <leader>yy :action Vcs.Show.Local.Changes<cr>
+nmap <leader>yp :action Vcs.QuickListPopupAction<cr>
+nmap <leader>ya :action Annotate<cr>
+nmap <leader>yl :action Vcs.Show.Log<cr>
+nmap <leader>yd :action Compare.LastVersion<cr>
+nmap <leader>gr :action Vcs.RollbackChangedLines<CR>
+" nmap <leader>yr :action Git.ResolveConflicts<cr>
+
+nmap <, :action MoveElementLeft<CR>
+nmap >, :action MoveElementRight<CR>
+
+nmap <leader>o :NERDTreeToggle<CR>
+
+nmap <leader>ce :action CloseEditors
