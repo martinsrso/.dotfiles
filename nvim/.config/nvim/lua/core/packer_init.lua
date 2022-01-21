@@ -30,7 +30,7 @@ end
 -- packer settings
 return packer.init {
    -- tell packer to put packer_compiled under the /lua folder so its cached by impatient
-   compile_path = vim.fn.stdpath "config" .. "/lua/packer_compiled.lua",
+   compile_path = vim.fn.stdpath "config" .. "/lua/core/packer_compiled.lua",
    git = {
       clone_timeout = 600, -- Timeout, in seconds, for git clones
    },

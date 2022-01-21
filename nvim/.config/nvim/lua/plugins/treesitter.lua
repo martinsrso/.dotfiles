@@ -4,25 +4,8 @@ if not present then
 end
 
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
--- parser_configs.norg = {
---    -- on macOS: https://github.com/nvim-neorg/neorg/issues/74#issuecomment-906627223
---    install_info = {
---       url = "https://github.com/nvim-neorg/tree-sitter-norg",
---       files = { "src/parser.c", "src/scanner.cc" },
---       branch = "main",
---    },
--- }
--- parser_configs.org = {
---    install_info = {
---       url = "https://github.com/milisims/tree-sitter-org",
---       revision = "main",
---       files = { "src/parser.c", "src/scanner.cc" },
---    },
---    filetype = "org",
--- }
-
 ts_config.setup {
-   ensure_installed = { "lua", "rust", "java", "go" },
+   ensure_installed = { "lua", "rust", "java", "go", "python" },
    indent = { enable = true },
    context_commentstring = {
       enable = true,
@@ -36,22 +19,22 @@ ts_config.setup {
       use_languagetree = true,
     --   additional_vim_regex_highlighting = { "org" },
    },
-   rainbow = {
-      enable = true,
-      extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-      max_file_lines = nil, -- Do not enable for files with more than n lines, int
-   },
-   playground = {
-      enable = true,
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-      persist_queries = false, -- Whether the query persists across vim sessions
-   },
+   -- rainbow = {
+   --    enable = true,
+   --    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+   --    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+   -- },
+   -- playground = {
+   --    enable = true,
+   --    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+   --    persist_queries = false, -- Whether the query persists across vim sessions
+   -- },
    incremental_selection = {
       enable = true,
       keymaps = {
          init_selection = "<CR>",
          scope_incremental = "<CR>",
-         node_incremental = "<TAB>",
+         node_incremental = "<C-CR>",
          node_decremental = "<S-TAB>",
       },
    },

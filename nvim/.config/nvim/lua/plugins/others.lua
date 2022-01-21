@@ -1,5 +1,54 @@
 local M = {}
 
+M.blankline = function()
+     vim.cmd [[highlight IndentBlanklineIndent1 guifg=#eee8d5 gui=nocombine]]
+    vim.g.indent_blankline_char = "│"
+  vim.g.indent_blankline_show_first_indent_level = true
+  vim.g.indent_blankline_filetype_exclude = {
+    "startify",
+    "dashboard",
+    "dotooagenda",
+    "log",
+    "fugitive",
+    "gitcommit",
+    "packer",
+    "vimwiki",
+    "markdown",
+    "json",
+    "txt",
+    "vista",
+    "help",
+    "todoist",
+    "NvimTree",
+    "peekaboo",
+    "git",
+    "TelescopePrompt",
+    "undotree",
+    "flutterToolsOutline",
+    "" -- for all buffers without a file type
+  }
+  vim.g.indent_blankline_buftype_exclude = {"terminal", "nofile"}
+  vim.g.indent_blankline_show_trailing_blankline_indent = false
+  vim.g.char_highlight_list = {
+        "IndentBlanklineIndent1",
+    }
+  -- vim.g.indent_blankline_show_current_context = true
+  vim.cmd('autocmd CursorMoved * IndentBlanklineRefresh')
+    local present, indent_blankline = pcall(require, "indent_blankline")
+    if present then
+        indent_blankline.setup({
+            -- char_highlight_list = {
+            --     "IndentBlanklineIndent1",
+            -- },
+        })
+    end
+end
+
+M.markdown = function()
+    vim.g.mkdp_auto_start = 1
+    vim.g.mkdp_echo_preview_url = 1
+end
+
 M.colorizer = function()
     local present, colorizer = pcall(require, "colorizer")
     if present then
@@ -15,6 +64,38 @@ M.colorizer = function()
           mode = "foreground", -- Set the display mode.
        })
        vim.cmd "ColorizerReloadAllBuffers"
+    end
+end
+
+M.gitsigns = function()
+   local present, gitsigns = pcall(require, "gitsigns")
+   if present then
+       gitsigns.setup()
+   end
+end
+
+M.taboutp = function()
+   local present, tab = pcall(require, "tabout")
+   if present then
+    tab.setup {
+        tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+        backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+        act_as_tab = true, -- shift content if tab out is not possible
+        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        enable_backwards = true, -- well ...
+        completion = true, -- if the tabkey is used in a completion pum
+        tabouts = {
+           {open = "'", close = "'"},
+           {open = '"', close = '"'},
+           {open = '`', close = '`'},
+           {open = '(', close = ')'},
+           {open = '[', close = ']'},
+           {open = '{', close = '}'},
+           {open = '#', close = ']'}
+        },
+        -- ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+        -- exclude = {} -- tabout will ignore these filetypes
+     }
     end
 end
 
@@ -53,6 +134,7 @@ M.luasnip = function()
     luasnip.config.set_config {
        history = true,
        updateevents = "TextChanged,TextChangedI",
+       region_check_events = "InsertEnter"
     }
     require("luasnip/loaders/from_vscode").load()
 end
@@ -89,7 +171,6 @@ M.searchbox = function()
           { noremap = true }
        )
     end
-    
  end
 
 return M

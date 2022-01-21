@@ -1,15 +1,13 @@
-local present, cmp = pcall(require, "cmp")
-local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+local cmp = require"cmp"
+local cmp_autopairs = require"nvim-autopairs.completion.cmp"
 
-if not present or not present2 then
-   return
-end
-
-vim.opt.completeopt = "menuone,noselect"
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
 
 -- nvim-cmp setup
 cmp.setup {
+    completion = {
+        keyword_length = 2,
+    },
    snippet = {
       expand = function(args)
          require("luasnip").lsp_expand(args.body)
@@ -66,7 +64,7 @@ cmp.setup {
          behavior = cmp.ConfirmBehavior.Replace,
          select = true,
       },
-      ["<Tab>"] = function(fallback)
+      ["<Tab>"] =  cmp.mapping(function(fallback)
          if cmp.visible() then
             cmp.select_next_item()
          elseif require("luasnip").expand_or_jumpable() then
@@ -74,8 +72,8 @@ cmp.setup {
          else
             fallback()
          end
-      end,
-      ["<S-Tab>"] = function(fallback)
+      end, { "i", "s" }),
+      ["<S-Tab>"] =  cmp.mapping(function(fallback)
          if cmp.visible() then
             cmp.select_prev_item()
          elseif require("luasnip").jumpable(-1) then
@@ -83,14 +81,16 @@ cmp.setup {
          else
             fallback()
          end
-      end,
+      end, { "i", "s" }),
    },
    sources = {
       { name = "nvim_lsp" },
+      { name = "crates"},
+      { name = "treesitter" },
       { name = "luasnip" },
       { name = "path" },
-      { name = "rg" },
+      -- { name = "rg" },
       { name = "nvim_lua" },
-      { name = "treesitter" },
    },
 }
+

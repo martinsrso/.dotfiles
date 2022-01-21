@@ -5,21 +5,18 @@ end
 
 bufferline.setup {
    options = {
-      offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-    --   buffer_close_icon = "",
+      offsets = { { filetype = "NvimTree", text = "", padding = 0 } },
       modified_icon = "[+]",
-    --   close_icon = "λ",
       show_close_icon = false,
       left_trunc_marker = "<-",
       right_trunc_marker = "->",
       max_name_length = 14,
       max_prefix_length = 13,
-      tab_size = 15,
-    --   show_tab_indicators = true,
+      tab_size = 10,
       enforce_regular_tabs = false,
       view = "multiwindow",
       show_buffer_close_icons = false,
-      separator_style = "thin",
+      separator_style = "thick",
       always_show_bufferline = false,
       diagnostics = false, -- "or nvim_lsp"
       custom_filter = function(buf_number)

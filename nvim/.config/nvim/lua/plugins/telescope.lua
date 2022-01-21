@@ -3,7 +3,7 @@ if not present then
    return
 end
 
-telescope.setup {
+telescope.setup{
    defaults = {
       vimgrep_arguments = {
          "rg",
@@ -15,40 +15,41 @@ telescope.setup {
          "--smart-case",
       },
       prompt_prefix = " λ ",
-      selection_caret = " > ",
+      prompt_prefix = "",
+      selection_caret = "> ",
       entry_prefix = "  ",
       initial_mode = "insert",
       selection_strategy = "reset",
       sorting_strategy = "ascending",
-      layout_strategy = "horizontal",
-      layout_config = {
-         horizontal = {
-            prompt_position = "top",
-            preview_width = 0.55,
-            results_width = 0.8,
-         },
-         vertical = {
-            mirror = false,
-         },
-         width = 0.87,
-         height = 0.80,
-         preview_cutoff = 120,
-      },
-      file_sorter = require("telescope.sorters").get_fuzzy_file,
-      file_ignore_patterns = {},
-      generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-      path_display={ "truncate" },
-      winblend = 0,
-      border = {},
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      color_devicons = true,
-      use_less = true,
-      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-      file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-      grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-      qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-      -- Developer configurations: Not meant for general override
-      buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+    layout_strategy = "bottom_pane",
+    layout_config = {
+      height = 20,
+    },
+
+   --  border = true,
+   --  borderchars = {
+   --    prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
+   --    results = { " " },
+   --    preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+   --    -- prompt = { " ", " ", "─", " ", " ", " ", "─", "─" },
+   --    -- results = { "─", " ", " ", " ", "─", "─", " ", " " },
+   --    -- preview = { "─", " ", "─", "│", "┬", "─", "─", "╰" },
+   --  },
+   --    file_sorter = require("telescope.sorters").get_fuzzy_file,
+   --    file_ignore_patterns = {},
+   --    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+   --    path_display={ "truncate" },
+   --    winblend = 0,
+   --    -- border = {},
+   --    -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+   --    color_devicons = true,
+   --    use_less = true,
+   --    set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+   --    -- file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+   --    -- grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+   --    -- qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+   --    -- -- Developer configurations: Not meant for general override
+   --    -- buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
    },
    extensions = {
       fzf = {
@@ -58,14 +59,25 @@ telescope.setup {
          case_mode = "smart_case", -- or "ignore_case" or "respect_case"
          -- the default case_mode is "smart_case"
       },
+      ["ui-select"] = {
+          require("telescope.themes").get_ivy {
+            -- even more opts
+              sorting_strategy = "ascending",
+              layout_strategy = "bottom_pane",
+                  previewer = false,
+              layout_config = {
+                 height = 8,
+              },
+          }
+      },
    },
 }
 
-local extensions = { "themes", "terms", "fzf" }
-local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
+local extensions = { "ui-select", "fzf", "dap" }
+-- local extensions = { "themes", "terms", "fzf", "dap", "ui-select" }
+-- local packer_repos = [["extensions", "telescope-fzf-native.nvim"]]
 
-pcall(function()
-   for _, ext in ipairs(extensions) do
-      telescope.load_extension(ext)
-   end
-end)
+for _, ext in ipairs(extensions) do
+  telescope.load_extension(ext)
+end
+

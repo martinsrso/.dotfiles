@@ -21,12 +21,12 @@ zcomet snippet OMZ::lib/grep.zsh
 # zcomet load ohmyzsh/ohmyzsh
 zcomet load ohmyzsh plugins/git
 zcomet load ohmyzsh plugins/docker
+zcomet load ohmyzsh plugins/docker-compose
 zcomet load ohmyzsh plugins/gitignore
 zcomet load ohmyzsh plugins/gcloud
 zcomet load ohmyzsh plugins/helm
 zcomet load ohmyzsh plugins/colored-man-pages
 zcomet load ohmyzsh plugins/kubectl
-zcomet load ohmyzsh plugins/pyenv
 zcomet load ohmyzsh plugins/terraform
 zcomet load hlissner/zsh-autopair
 zcomet load romkatv/powerlevel10k
@@ -42,13 +42,13 @@ zcomet load zdharma-continuum/fast-syntax-highlighting
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
+source ~/.zshenv
+
 zcomet compinit
 
-[[ ! -f ~/.p10k-robbyrussell.zsh ]] || source ~/.p10k-robbyrussell.zsh
+# [[ ! -f ~/.p10k-robbyrussell.zsh ]] || source ~/.p10k-robbyrussell.zsh
 
+# eval "$(pyenv init --path)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
