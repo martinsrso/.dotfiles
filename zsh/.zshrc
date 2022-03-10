@@ -40,10 +40,14 @@ zcomet load MichaelAquilina/zsh-you-should-use
 zcomet load Aloxaf/fzf-tab
 zcomet load zdharma-continuum/fast-syntax-highlighting
 
+zcomet load jreese/zsh-titles
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 source ~/.zshenv
 
+# # zstyle ':completion:*:default' list-colors
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zcomet compinit
 
 # [[ ! -f ~/.p10k-robbyrussell.zsh ]] || source ~/.p10k-robbyrussell.zsh
@@ -52,3 +56,7 @@ zcomet compinit
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# export SDKMAN_DIR="/Users/oliveira.rafael/.sdkman"
+# [[ -s "/Users/oliveira.rafael/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/oliveira.rafael/.sdkman/bin/sdkman-init.sh"

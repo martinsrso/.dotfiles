@@ -76,23 +76,19 @@ M.setup = function(on_attach, capabilities)
                   importMergeBehaviour = "full",
                   importPrefix = "by_crate",
                 },
-
                 callInfo = {
                   full = true,
                 },
-
                 cargo = {
                   allFeatures = true,
                   autoreload = true,
                   loadOutDirsFromCheck = true,
                 },
-
                 checkOnSave = {
                   command = "clippy",
                   allFeatures = true,
                   extraArgs = {"--tests"},
                 },
-
                 completion = {
                   addCallArgumentSnippets = true,
                   addCallParenthesis = true,
@@ -103,12 +99,10 @@ M.setup = function(on_attach, capabilities)
                     enable = true,
                   },
                 },
-
                 diagnostics = {
                   enable = true,
                   enableExperimental = true,
                 },
-
                 hoverActions = {
                   enable = true,
                   debug = true,

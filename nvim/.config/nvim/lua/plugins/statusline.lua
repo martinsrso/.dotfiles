@@ -22,8 +22,8 @@ lualine.setup {
       lualine_c = { {
         'filename',
         file_status = true,
-        path = 1,
-        shorting_target = 40,
+        path = 2,
+        shorting_target = 25,
       }, {"require'lsp-status'.status()"} },
       lualine_x = {'diagnostics', 'diff', 'filetype'},
       lualine_y = {},

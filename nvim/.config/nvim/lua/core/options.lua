@@ -100,6 +100,12 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
 
+-- opt.title = true
+
+-- vim.cmd([[
+-- set titlestring=%t%(\ %M%)%(\ (%{expand(\"%:~:.:h\")})%)%(\ %a%)
+-- ]])
+
 vim.api.nvim_exec([[
   augroup NoAutoComment
     au!

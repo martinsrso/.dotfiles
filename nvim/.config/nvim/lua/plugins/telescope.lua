@@ -14,6 +14,8 @@ telescope.setup{
          "--column",
          "--smart-case",
       },
+         path_display={ "truncate" },
+        shorten_path = true,
       prompt_prefix = " λ ",
       prompt_prefix = "",
       selection_caret = "> ",
@@ -62,6 +64,7 @@ telescope.setup{
       ["ui-select"] = {
           require("telescope.themes").get_ivy {
             -- even more opts
+              shorten_path = true,
               sorting_strategy = "ascending",
               layout_strategy = "bottom_pane",
                   previewer = false,

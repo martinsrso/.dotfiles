@@ -10,8 +10,8 @@ ts_config.setup {
    context_commentstring = {
       enable = true,
       config = {
-        css = '// %s'
-        -- rust = "// %s"
+        css = '// %s',
+        rust = "// %s"
       }
    },
    highlight = {

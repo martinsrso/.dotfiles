@@ -7,43 +7,7 @@ vim.g.nvim_tree_highlight_opened_files = 1
 vim.g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 vim.g.nvim_tree_width_allow_resize = 1
 vim.g.nvim_tree_group_empty = 1
-vim.g.nvim_tree_quit_on_open = 1
 vim.g.nvim_tree_icon_padding = " "
-vim.g.nvim_tree_window_picker_exclude = {
-  filetype = {'fugitive'},
-  buftype = {'terminal'}
-}
-
--- vim.g["nvim_tree_show_icons"] = {
---   git = 1,
---   folders = 1,
---   files = 1,
---   folder_arrows = 0,
--- }
--- 
--- vim.g["nvim_tree_icons"] = {
---     default = "",
---    symlink = "",
---   git = {
---     unstaged = "○",
---     staged = "",
---     unmerged = "⊜",
---     renamed = "⊙",
---     untracked = "⊕",
---     deleted = "⊗",
---     ignored = "⊘"
---   },
---   folder = {
---     arrow_open = "▾",
---     arrow_closed = "▸",
---     default = "▸",
---     open =  "▾",
---     empty = "▸",
---     empty_open = "▾",
---     symlink = "▸",
---     symlink_open = "▾",
---   }
--- }
 
 local present, nvimtree = pcall(require, "nvim-tree")
 
@@ -52,30 +16,59 @@ if not present then
 end
 
 nvimtree.setup {
-    git = {
-        enable = false,
-        ignore = true,
-        timeout = 400,
+  diagnostics = {
+    enable = false,
+  },
+  update_focused_file = {
+    enable      = true,
+    update_cwd  = false,
+    ignore_list = {}
+  },
+  filters = {
+    custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store'  }
+  },
+  git = {
+    enable = false,
+    ignore = false,
+    timeout = 500,
+  },
+  view = {
+    width = 40,
+    side = 'right',
+  },
+  trash = {
+    cmd = "trash",
+    require_confirm = true
+  },
+  actions = {
+    change_dir = {
+      enable = true,
+      global = false,
     },
-   open_on_setup = false,
-   auto_close = true,
-   opens_on_tab = false,
-   update_focused_file = {
-     enable = true
-   },
-     view = {
-       allow_resize = true,
-       side = "right",
-       width = 30,
+    open_file = {
+      quit_on_open = false,
+      resize_window = false,
+      window_picker = {
+        enable = true,
+        chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+        exclude = {
+          filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame", },
+          buftype  = { "nofile", "terminal", "help", },
+        }
+      }
+    }
+  },
+  log = {
+    enable = false,
+    types = {
+      all = false,
+      config = false,
+      git = false,
     },
-   diagnostics = {
-     enable = true,
-     icons = {
-       warning = "×",
-       error = "×",
-     }
-   },
-   filters = {
-     custom = { '.git', 'node_modules', '.cache', 'tmp', '.DS_Store'  }
-   }
+  },
+  update_focused_file = {
+    enable      = true,
+    update_cwd  = false,
+    ignore_list = {}
+  }
 }

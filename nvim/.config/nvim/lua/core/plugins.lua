@@ -46,12 +46,20 @@ return packer.startup(function()
 --   }
 
     use {
-        "overcache/NeoSolarized",
+        "ishan9299/nvim-solarized-lua",
         config = function()
             vim.cmd([[set background=light]])
-            vim.cmd([[colorscheme NeoSolarized]])
+            vim.cmd([[colorscheme solarized]])
         end,
     }
+
+    -- use {
+    --     "overcache/NeoSolarized",
+    --     config = function()
+    --         vim.cmd([[set background=light]])
+    --         vim.cmd([[colorscheme NeoSolarized]])
+    --     end,
+    -- }
 
    use {
       "kyazdani42/nvim-tree.lua",
@@ -155,12 +163,12 @@ return packer.startup(function()
 
 --    use { 'tpope/vim-surround' }
 
-    use {
-      "blackCauldron7/surround.nvim",
-      config = function()
-        require"surround".setup {mappings_style = "surround"}
-      end
-    }
+    -- use {
+    --   "blackCauldron7/surround.nvim",
+    --   config = function()
+    --     require"surround".setup {mappings_style = "surround"}
+    --   end
+    -- }
 
    use {
       "norcalli/nvim-colorizer.lua",
