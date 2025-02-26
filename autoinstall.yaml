@@ -1,0 +1,31 @@
+#cloud-config
+autoinstall:
+    version: 1
+    identity:
+        realname: 'undefined user'
+        hostname: ubuntu-desktop
+        username: unxusr
+        password: '$1$8m5K9fho$a7fMnMW2lgUWIv7ccwm/J0'
+    locale: en_US.UTF-8
+    keyboard:
+        layout: dvorak-intl
+    timezone: "America/Sao_Paulo"   
+    ssh:
+        install-server: true
+        allow-pw: true
+    packages:
+        - docker
+        - git
+        - wget
+        - firefox
+        - curl
+        - i3
+        - xorg
+        - xterm
+        - x11-xserver-utils
+        - lightdm
+        - lightdm-gtk-greeter
+        - network-manager
+        - open-vm-tools
+    updates: all
+    shutdown: reboot
