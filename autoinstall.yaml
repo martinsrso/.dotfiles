@@ -6,15 +6,14 @@ autoinstall:
         hostname: ubuntu-desktop
         username: unxusr
         password: '$1$8m5K9fho$a7fMnMW2lgUWIv7ccwm/J0'
-    locale: en_US.UTF-8
+    locale: en_US.utf8
     keyboard:
-        layout: dvorak-intl
+        layout: "dvorak-intl"
     timezone: "America/Sao_Paulo"   
     ssh:
         install-server: true
         allow-pw: true
     packages:
-        - docker
         - git
         - wget
         - firefox
